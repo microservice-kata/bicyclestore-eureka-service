@@ -6,7 +6,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE"
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE'
     }
 }
 
@@ -28,15 +28,13 @@ configurations {
 }
 
 ext {
-    lombokVersion = "1.16.20"
-    springBootVersion = "1.5.10.RELEASE"
-    springCloudEurekaServerVersion = "1.4.5.RELEASE"
+    lombokVersion = "1.18.2"
+    springCloudEurekaServerVersion = "2.0.1.RELEASE"
     springCloudDependenciesVersion = "Finchley.RELEASE"
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
-    compile("org.springframework.cloud:spring-cloud-starter-eureka-server:${springCloudEurekaServerVersion}")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${springCloudEurekaServerVersion}")
     compile("org.springframework.cloud:spring-cloud-dependencies:${springCloudDependenciesVersion}")
     compile("org.projectlombok:lombok:${lombokVersion}")
 }

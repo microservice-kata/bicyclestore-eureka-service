@@ -1,6 +1,20 @@
 server:
-  port: 8761
+  port: 63002
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, shutdown
+  endpoint:
+    shutdown:
+      enabled: true
+
+
+---
+spring:
+  profiles:
+    active: default
 eureka:
   instance:
     hostname: registry-discovery
@@ -8,11 +22,26 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://registry-discovery:${server.port}/eureka/
+      defaultZone: http://localhost:${server.port}/eureka/
 
-
+---
 spring:
-  cloud:
-    config:
-      discovery:
-        enabled: true
+  profiles:
+    active: qa-zone-a
+eureka:
+  instance:
+    hostname: qa-peer1
+  client:
+    serviceUrl:
+      defaultZone: http://qa-peer2:${server.port}/eureka/
+
+---
+spring:
+  profiles:
+    active: qa-zone-b
+eureka:
+  instance:
+    hostname: qa-peer2
+  client:
+    serviceUrl:
+      defaultZone: http://qa-peer1:${server.port}/eureka/
