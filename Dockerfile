@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM java:8-jre
 
 MAINTAINER Laijin Lu <1@aikin.me>
 
