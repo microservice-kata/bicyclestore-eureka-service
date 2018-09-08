@@ -12,37 +12,23 @@ buildscript {
 
 repositories {
     mavenCentral()
-    maven { url "https://jitpack.io" }
 }
 
 apply plugin: "java"
 apply plugin: "idea"
-apply plugin: "application"
 apply plugin: "org.springframework.boot"
+apply plugin: 'io.spring.dependency-management'
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-configurations {
-    providedRuntime
-}
-
-ext {
-    springCloudEurekaServerVersion = "2.0.1.RELEASE"
-    springCloudDependenciesVersion = "Finchley.RELEASE"
-
-    lombokVersion = "1.18.2"
-    logstashVersion = "5.2"
-}
 
 dependencies {
-    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${springCloudEurekaServerVersion}")
-    compile("org.springframework.cloud:spring-cloud-dependencies:${springCloudDependenciesVersion}")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.0.1.RELEASE")
+    compile("org.springframework.cloud:spring-cloud-dependencies:Finchley.RELEASE")
 
-    compile("org.projectlombok:lombok:${lombokVersion}")
-    compile "net.logstash.logback:logstash-logback-encoder:${logstashVersion}"
+    compile("org.projectlombok:lombok:1.18.2")
+    compile "net.logstash.logback:logstash-logback-encoder:5.2"
 }
 
-applicationDefaultJvmArgs = [
-    "-Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n"
-]
