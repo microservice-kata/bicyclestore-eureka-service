@@ -28,15 +28,19 @@ configurations {
 }
 
 ext {
-    lombokVersion = "1.18.2"
     springCloudEurekaServerVersion = "2.0.1.RELEASE"
     springCloudDependenciesVersion = "Finchley.RELEASE"
+
+    lombokVersion = "1.18.2"
+    logstashVersion = "5.2"
 }
 
 dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${springCloudEurekaServerVersion}")
     compile("org.springframework.cloud:spring-cloud-dependencies:${springCloudDependenciesVersion}")
+
     compile("org.projectlombok:lombok:${lombokVersion}")
+    compile "net.logstash.logback:logstash-logback-encoder:${logstashVersion}"
 }
 
 applicationDefaultJvmArgs = [
