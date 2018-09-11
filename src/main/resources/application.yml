@@ -13,7 +13,6 @@ management:
 logging:
   config: classpath:logback.xml
 
-
 ---
 spring:
   profiles:
@@ -26,25 +25,3 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://localhost:${server.port}/eureka/
-
----
-spring:
-  profiles:
-    active: qa-zone-a
-eureka:
-  instance:
-    hostname: qa-peer1
-  client:
-    serviceUrl:
-      defaultZone: http://qa-peer2:${server.port}/eureka/
-
----
-spring:
-  profiles:
-    active: qa-zone-b
-eureka:
-  instance:
-    hostname: qa-peer2
-  client:
-    serviceUrl:
-      defaultZone: http://qa-peer1:${server.port}/eureka/
